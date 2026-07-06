@@ -384,9 +384,12 @@
     nav{ order:3; width:100%; flex-wrap:nowrap; overflow-x:auto; gap:4px; padding-bottom:2px; }
     nav button{ flex:0 0 auto; padding:7px 12px; }
 
-    /* Control bar wraps as tidy rows */
-    .control-bar{ gap:10px 16px; padding:8px 12px; }
-    .control-group{ gap:6px; }
+    /* Control bar: each group on its own row, label above its buttons */
+    .control-bar{ flex-direction:column; align-items:stretch; gap:12px; padding:12px 14px; }
+    .control-group{ flex-wrap:wrap; justify-content:flex-start; gap:8px; }
+    .cg-label{ flex:0 0 100%; font-size:12.5px !important; font-weight:600; color:var(--text-2) !important; margin-bottom:2px; }
+    .theme-bar button, .lang-bar button{ padding:8px 16px; font-size:13px; }
+    .layout-bar button{ width:34px; height:34px; font-size:13.5px; }
 
     .hero{ padding:34px 20px; }
     .hero h1{ font-size:24px; }
