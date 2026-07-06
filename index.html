@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="sky" data-layout="1">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MedLearn - Anatomy Platform Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --radius:10px; }
+
+  html[data-theme="sky"]{
+    --bg:#F5F9FE; --surface:#FFFFFF; --surface-2:#EAF2FB;
+    --text:#1C2B3A; --text-2:#5B7085; --text-3:#93A7BB; --border:#DEE9F5;
+    --accent:#3B82F6; --accent-bg:#E8F0FE; --accent-dark:#1D4FB8;
+    --green:#1E9E6A; --green-bg:#E3F7EE;
+    --amber:#C07C10; --amber-bg:#FDF3DF;
+    --red:#D65454; --red-bg:#FDEDED;
+    --thumb1:#5B9BF8; --thumb2:#38BDA3; --thumb3:#F58A6B; --thumb4:#9B8CF0; --thumb5:#F08CB4; --thumb6:#F0B85A;
+    --radius:14px; --font-heading:'Inter', sans-serif;
+    --card-shadow:0 4px 20px rgba(59,130,246,0.07);
+  }
+  html[data-theme="mint"]{
+    --bg:#F2FAF7; --surface:#FFFFFF; --surface-2:#E4F4EC;
+    --text:#17332A; --text-2:#54756A; --text-3:#8FAEA3; --border:#D8ECE2;
+    --accent:#10A37F; --accent-bg:#E0F5EE; --accent-dark:#066651;
+    --green:#1E9E6A; --green-bg:#E3F7EE;
+    --amber:#C07C10; --amber-bg:#FDF3DF;
+    --red:#D65454; --red-bg:#FDEDED;
+    --thumb1:#2FB596; --thumb2:#57A6E8; --thumb3:#F5A05A; --thumb4:#8F86E8; --thumb5:#EF8BAA; --thumb6:#6FBF5E;
+    --radius:20px; --font-heading:'Poppins', sans-serif;
+    --card-shadow:0 6px 22px rgba(16,163,127,0.08);
+  }
+  html[data-theme="lavender"]{
+    --bg:#F8F6FD; --surface:#FFFFFF; --surface-2:#EFEAFA;
+    --text:#2A2440; --text-2:#6E6590; --text-3:#A79EC4; --border:#E6E0F5;
+    --accent:#7C5CD6; --accent-bg:#EEE8FC; --accent-dark:#4B3599;
+    --green:#1E9E6A; --green-bg:#E3F7EE;
+    --amber:#C07C10; --amber-bg:#FDF3DF;
+    --red:#D65454; --red-bg:#FDEDED;
+    --thumb1:#9B7FE8; --thumb2:#E88BC4; --thumb3:#6FA8F5; --thumb4:#5BC4B0; --thumb5:#F0A468; --thumb6:#8891F0;
+    --radius:16px; --font-heading:'Space Grotesk', sans-serif;
+    --card-shadow:0 5px 24px rgba(124,92,214,0.09);
+  }
+
+  *{box-sizing:border-box;}
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; font-family:'Inter', sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.6;
+    transition:background .2s, color .2s;
+  }
+  h1,h2,h3,h4{ font-family:var(--font-heading); }
+  svg.icon{ width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:2; vertical-align:-3px; flex-shrink:0; }
+
+  .sticky-head{ position:sticky; top:0; z-index:30; background:var(--surface); }
+
+  .control-bar{
+    background:var(--surface-2); border-bottom:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; gap:22px;
+    padding:9px 12px; font-size:13px; color:var(--text-2); flex-wrap:wrap;
+  }
+  .control-group{ display:flex; align-items:center; gap:8px; }
+  .control-group .cg-label{ font-size:12px; color:var(--text-3); }
+  .theme-bar button, .lang-bar button{
+    border:1px solid var(--border); background:var(--surface); color:var(--text);
+    font-family:inherit; font-size:12.5px; padding:5px 14px; border-radius:20px; cursor:pointer;
+  }
+  .theme-bar button.active, .lang-bar button.active{ background:var(--accent); border-color:var(--accent); color:var(--surface); font-weight:600; }
+  html[lang="ar"] body{ font-family:'Cairo', sans-serif; }
+  html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, html[lang="ar"] h4{ font-family:'Cairo', sans-serif; }
+  .layout-bar button{
+    width:26px; height:26px; border:1px solid var(--border); background:var(--surface); color:var(--text-2);
+    font-family:inherit; font-size:12.5px; font-weight:600; border-radius:50%; cursor:pointer; padding:0;
+  }
+  .layout-bar button.active{ background:var(--accent); border-color:var(--accent); color:var(--surface); }
+
+  .topbar{
+    background:var(--surface); border-bottom:1px solid var(--border);
+  }
+  .topbar-inner{
+    max-width:1140px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 20px; gap:12px;
+  }
+  .brand{ display:flex; align-items:center; gap:8px; font-weight:700; font-size:18px; white-space:nowrap; }
+  .brand-badge{
+    width:32px; height:32px; border-radius:calc(var(--radius) - 2px);
+    background:var(--accent); color:var(--surface);
+    display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700;
+  }
+  nav{ display:flex; gap:2px; flex-wrap:wrap; }
+  nav button{
+    border:none; background:none; cursor:pointer; font-family:inherit; font-size:13.5px;
+    color:var(--text-2); padding:8px 12px; border-radius:8px; transition:background .15s, color .15s;
+    white-space:nowrap;
+  }
+  nav button:hover{ background:var(--surface-2); color:var(--text); }
+  nav button.active{ background:var(--accent-bg); color:var(--accent-dark); font-weight:600; }
+  .cta-btn{
+    background:var(--accent); color:var(--surface); border:none; font-family:inherit;
+    font-size:14px; font-weight:600; padding:9px 20px; border-radius:calc(var(--radius) - 2px); cursor:pointer;
+    white-space:nowrap;
+  }
+  .cta-btn.outline{ background:transparent; border:1px solid var(--border); color:var(--text); }
+  .cta-btn.small{ padding:6px 14px; font-size:13px; }
+  main{ max-width:1140px; margin:0 auto; padding:32px 20px 80px; }
+  .page{ display:none; }
+  .page.active{ display:block; animation:fade .25s ease; }
+  @keyframes fade{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  .card{ background:var(--surface); border:1px solid var(--border); border-radius:calc(var(--radius) + 4px); box-shadow:var(--card-shadow); }
+  .section-title{ font-size:19px; font-weight:600; margin:0 0 16px; }
+  .section-sub{ color:var(--text-2); font-size:13.5px; margin:-10px 0 20px; }
+
+  /* HOME - animated background */
+  .home-bg{ position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0; }
+  .home-bg::before{
+    content:''; position:absolute; inset:0;
+    background-image:radial-gradient(var(--text-3) 1px, transparent 1px);
+    background-size:36px 36px; opacity:.14;
+  }
+  .blob{ position:absolute; border-radius:50%; filter:blur(80px); opacity:.20; }
+  .blob.b1{ width:520px; height:520px; top:-160px; left:-140px; background:var(--thumb1); animation:drift 16s ease-in-out infinite alternate; }
+  .blob.b2{ width:460px; height:460px; top:28%; right:-170px; background:var(--thumb4); animation:drift 21s ease-in-out infinite alternate-reverse; }
+  .blob.b3{ width:400px; height:400px; bottom:-140px; left:28%; background:var(--thumb2); animation:drift 26s ease-in-out infinite alternate; }
+  .shape{ position:absolute; display:block; opacity:.4; pointer-events:none; }
+  .shape.cross::before, .shape.cross::after{ content:''; position:absolute; background:currentColor; border-radius:3px; }
+  .shape.cross::before{ left:50%; top:0; width:26%; height:100%; transform:translateX(-50%); }
+  .shape.cross::after{ top:50%; left:0; height:26%; width:100%; transform:translateY(-50%); }
+  .shape.ring{ border:3px solid currentColor; border-radius:50%; }
+  .shape.pill{ border-radius:20px; border:3px solid currentColor; background:linear-gradient(90deg, currentColor 0 50%, transparent 50%); }
+  .shape.dot{ border-radius:50%; background:currentColor; }
+  @keyframes drift{ 0%{ transform:translate(0,0) scale(1); } 100%{ transform:translate(60px,-40px) scale(1.12); } }
+  @keyframes floaty{ 0%,100%{ transform:translateY(0) rotate(0deg); } 50%{ transform:translateY(-24px) rotate(12deg); } }
+  @media (prefers-reduced-motion: reduce){
+    .home-bg *, .hero::before, .hero::after{ animation:none !important; }
+  }
+
+  /* HOME */
+  .home-flow{ display:grid; gap:28px; grid-template-columns:1fr; grid-template-areas:"hero" "features" "courses" "instructor" "testimonials" "cta"; position:relative; z-index:1; }
+  .blk-hero{ grid-area:hero; }
+  .blk-features{ grid-area:features; }
+  .blk-courses{ grid-area:courses; }
+  .blk-instructor{ grid-area:instructor; margin-bottom:0 !important; }
+  .blk-testimonials{ grid-area:testimonials; }
+  .blk-cta{ grid-area:cta; margin-top:0 !important; }
+
+  .hero{ padding:52px 40px; text-align:center; position:relative; overflow:hidden; }
+  .hero::before{
+    content:''; position:absolute; top:-140px; right:-120px; width:340px; height:340px;
+    border-radius:50%; background:var(--accent-bg); animation:drift 13s ease-in-out infinite alternate;
+  }
+  .hero::after{
+    content:''; position:absolute; bottom:-150px; left:-110px; width:300px; height:300px;
+    border-radius:50%; background:var(--green-bg); animation:drift 17s ease-in-out infinite alternate-reverse;
+  }
+  .hero-inner{ position:relative; z-index:1; }
+  .hero h1{ font-size:32px; font-weight:700; margin:0 0 12px; }
+  .hero p{ color:var(--text-2); font-size:15px; max-width:580px; margin:0 auto 26px; }
+  .hero-actions{ display:flex; gap:12px; justify-content:center; margin-bottom:34px; }
+  .stats{ display:flex; justify-content:center; gap:44px; }
+  .stat b{ display:block; font-size:22px; }
+  .stat span{ font-size:12.5px; color:var(--text-2); }
+
+  /* Layout 2 - courses first, split hero */
+  html[data-layout="2"] .home-flow{ grid-template-areas:"hero" "courses" "features" "instructor" "testimonials" "cta"; }
+  html[data-layout="2"] .hero-inner, html[data-layout="5"] .hero-inner{ display:flex; align-items:center; justify-content:space-between; gap:32px; text-align:start; }
+  html[data-layout="2"] .hero, html[data-layout="5"] .hero{ text-align:start; }
+  html[data-layout="2"] .hero-actions, html[data-layout="5"] .hero-actions{ justify-content:flex-start; margin-bottom:0; }
+  html[data-layout="2"] .stats, html[data-layout="5"] .stats{ flex-direction:column; align-items:flex-start; gap:16px; }
+  html[data-layout="2"] .course-grid{ grid-template-columns:repeat(2,1fr); }
+
+  /* Layout 3 - sidebar */
+  html[data-layout="3"] .home-flow{
+    grid-template-columns:280px 1fr;
+    grid-template-areas:
+      "instructor hero"
+      "instructor features"
+      "instructor courses"
+      "instructor testimonials"
+      "instructor cta";
+  }
+  html[data-layout="3"] .blk-instructor{ position:sticky; top:104px; align-self:start; }
+  html[data-layout="3"] .instructor-card{ flex-direction:column; text-align:center; align-items:center; }
+
+  /* Layout 4 - dashboard tiles */
+  html[data-layout="4"] .home-flow{
+    grid-template-columns:repeat(3, minmax(0,1fr));
+    grid-template-areas:
+      "hero hero hero"
+      "features courses instructor"
+      "testimonials testimonials testimonials"
+      "cta cta cta";
+  }
+  html[data-layout="4"] .blk-features, html[data-layout="4"] .blk-courses, html[data-layout="4"] .blk-testimonials{
+    background:var(--surface); border:1px solid var(--border); border-radius:calc(var(--radius) + 6px); padding:20px;
+  }
+  html[data-layout="4"] .feature-grid{ margin:14px 0 0; grid-template-columns:1fr; }
+  html[data-layout="4"] .testi-grid{ margin:14px 0 0; grid-template-columns:1fr; }
+
+  /* Layout 5 - compact */
+  html[data-layout="5"] .home-flow{ gap:16px; }
+  html[data-layout="5"] .feature-grid{ display:flex; flex-wrap:nowrap; overflow-x:auto; gap:14px; }
+  html[data-layout="5"] .feature-grid .feature{ min-width:200px; flex-shrink:0; }
+  html[data-layout="5"] .course-grid{ grid-template-columns:repeat(4,1fr); }
+  html[data-layout="5"] .testi-grid > *:nth-child(n+2){ display:none; }
+  html[data-layout="5"] .hero{ padding:36px 40px; }
+
+  .feature-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:16px; margin:28px 0 34px; }
+  .feature{ padding:18px; text-align:start; }
+  .feature .fi{
+    width:38px; height:38px; border-radius:calc(var(--radius) - 2px); background:var(--accent-bg); color:var(--accent-dark);
+    display:flex; align-items:center; justify-content:center; margin-bottom:12px;
+  }
+  .feature h4{ font-size:14.5px; margin:0 0 6px; }
+  .feature p{ font-size:12.5px; color:var(--text-2); margin:0; }
+
+  .course-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:18px; margin-bottom:20px; }
+  .course-card{ overflow:hidden; cursor:pointer; transition:transform .15s; }
+  .course-card:hover{ transform:translateY(-3px); }
+  .thumb{ height:96px; display:flex; align-items:center; justify-content:center; font-size:22px; color:#fff; }
+  .course-body{ padding:14px 16px; }
+  .tag-row{ display:flex; gap:6px; margin-bottom:8px; flex-wrap:wrap; }
+  .tag{ font-size:11px; font-weight:600; padding:2px 9px; border-radius:20px; }
+  .tag.free{ background:var(--green-bg); color:var(--green); }
+  .tag.level{ background:var(--surface-2); color:var(--text-2); }
+  .course-body h3{ font-size:15px; margin:0 0 6px; }
+  .course-meta{ font-size:12.5px; color:var(--text-2); margin:0 0 8px; }
+  .rating{ display:flex; align-items:center; gap:5px; font-size:12px; color:var(--text-2); margin-bottom:10px; }
+  .rating b{ color:var(--text); }
+  .instructor-row{ display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+  .avatar{ width:24px; height:24px; border-radius:50%; background:var(--accent-bg); color:var(--accent-dark); font-size:10.5px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .avatar.lg{ width:64px; height:64px; font-size:22px; }
+  .progress{ height:5px; background:var(--surface-2); border-radius:4px; overflow:hidden; }
+  .progress > div{ height:100%; background:var(--accent); }
+  .filter-row{ display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+  .filter-pill{ border:1px solid var(--border); background:var(--surface); color:var(--text-2); font-size:12.5px; padding:6px 14px; border-radius:20px; cursor:pointer; }
+  .filter-pill.active{ background:var(--accent); border-color:var(--accent); color:var(--surface); font-weight:600; }
+
+  .instructor-card{ display:flex; gap:20px; padding:24px; align-items:flex-start; margin-bottom:28px; }
+  .instructor-card h3{ font-size:16px; margin:0 0 4px; }
+  .instructor-card .role{ font-size:13px; color:var(--accent-dark); font-weight:600; margin:0 0 10px; }
+  .instructor-card p{ font-size:13.5px; color:var(--text-2); margin:0; }
+
+  .testi-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin:20px 0 34px; }
+  .testi{ padding:18px; }
+  .testi p{ font-size:13.5px; color:var(--text-2); margin:0 0 14px; }
+  .testi .who{ display:flex; align-items:center; gap:8px; font-size:12.5px; }
+  .testi .who b{ font-size:12.5px; }
+
+  .cta-banner{ text-align:center; padding:40px; margin-top:8px; background:var(--accent-bg); }
+  .cta-banner h2{ font-size:20px; margin:0 0 8px; color:var(--accent-dark); }
+  .cta-banner p{ font-size:13.5px; color:var(--text-2); margin:0 0 18px; }
+
+  /* COURSE DETAILS */
+  .cd-header{ padding:28px 30px; margin-bottom:22px; }
+  .cd-header h1{ font-size:24px; margin:0 0 8px; }
+  .cd-header p{ font-size:13.5px; color:var(--text-2); max-width:600px; margin:0 0 14px; }
+  .cd-layout{ display:grid; grid-template-columns:1.7fr 1fr; gap:20px; align-items:start; }
+  .module{ margin-bottom:10px; overflow:hidden; }
+  .module-head{ padding:13px 16px; display:flex; align-items:center; justify-content:space-between; font-size:14px; font-weight:600; cursor:pointer; }
+  .module-lessons{ border-top:1px solid var(--border); }
+  .module-lessons .lesson-row{ display:flex; align-items:center; gap:10px; padding:10px 16px; font-size:13px; color:var(--text-2); border-bottom:1px solid var(--border); }
+  .module-lessons .lesson-row:last-child{ border-bottom:none; }
+  .enroll-card{ padding:20px; position:sticky; top:100px; }
+  .enroll-price{ font-size:24px; font-weight:700; margin:0 0 4px; }
+  .enroll-card ul{ list-style:none; padding:0; margin:16px 0 0; font-size:13px; color:var(--text-2); }
+  .enroll-card li{ display:flex; align-items:center; gap:8px; padding:6px 0; }
+
+  /* LESSON PAGE */
+  .lesson-layout{ display:grid; grid-template-columns:2.2fr 1fr; gap:20px; align-items:start; }
+  .video-box{ overflow:hidden; }
+  .video-frame{ aspect-ratio:16/9; background:#14161A; display:flex; align-items:center; justify-content:center; color:#fff; }
+  .play-circle{ width:58px; height:58px; border-radius:50%; background:rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; }
+  .play-circle svg{ width:22px; height:22px; }
+  .video-info{ padding:18px 20px; }
+  .video-info h2{ font-size:17px; margin:0 0 6px; }
+  .video-info p{ font-size:13px; color:var(--text-2); margin:0; }
+  .tab-row{ display:flex; gap:4px; padding:0 20px; border-top:1px solid var(--border); }
+  .tab-btn{ border:none; background:none; font-family:inherit; font-size:13px; padding:12px 10px; color:var(--text-2); cursor:pointer; border-bottom:2px solid transparent; }
+  .tab-btn.active{ color:var(--accent-dark); border-bottom-color:var(--accent); font-weight:600; }
+  .tab-panel{ display:none; padding:16px 20px 20px; font-size:13.5px; color:var(--text-2); }
+  .tab-panel.active{ display:block; }
+  .file-chip{ display:flex; align-items:center; gap:10px; padding:10px 12px; border:1px solid var(--border); border-radius:calc(var(--radius) - 2px); margin-bottom:8px; font-size:13px; }
+  .file-chip span.name{ flex:1; color:var(--text); }
+  .comment{ display:flex; gap:10px; margin-bottom:14px; }
+  .comment p{ margin:2px 0 0; font-size:13px; }
+  .comment b{ font-size:13px; color:var(--text); }
+
+  .lesson-list{ padding:14px; }
+  .lesson-list h4{ font-size:13px; color:var(--text-3); margin:0 0 4px; font-weight:600; }
+  .side-progress-label{ font-size:11.5px; color:var(--text-2); margin:0 0 10px; }
+  .side-progress{ height:5px; background:var(--surface-2); border-radius:4px; overflow:hidden; margin-bottom:14px; }
+  .side-progress > div{ height:100%; background:var(--accent); }
+  .lesson-item{ display:flex; align-items:center; gap:10px; padding:9px 8px; border-radius:8px; font-size:13px; margin-bottom:2px; }
+  .lesson-item.done{ color:var(--text-2); }
+  .lesson-item.current{ background:var(--accent-bg); color:var(--accent-dark); font-weight:600; }
+  .lesson-item.locked{ color:var(--text-3); }
+
+  /* QUIZ */
+  .quiz-box{ max-width:580px; margin:0 auto; padding:30px 32px; }
+  .quiz-intro{ text-align:center; }
+  .quiz-intro h2{ font-size:19px; margin:14px 0 8px; }
+  .quiz-intro p{ font-size:13.5px; color:var(--text-2); margin:0 0 20px; }
+  .quiz-meta-row{ display:flex; justify-content:center; gap:26px; margin-bottom:24px; }
+  .quiz-meta-row div{ font-size:12px; color:var(--text-2); text-align:center; }
+  .quiz-meta-row b{ display:block; font-size:16px; color:var(--text); }
+  .quiz-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+  .quiz-top span{ font-size:13px; color:var(--text-2); }
+  .quiz-progress{ height:5px; width:140px; background:var(--surface-2); border-radius:4px; overflow:hidden; }
+  .quiz-progress > div{ height:100%; width:40%; background:var(--accent); }
+  .question{ font-size:17px; font-weight:600; margin:0 0 18px; }
+  .option{ border:1px solid var(--border); border-radius:calc(var(--radius) - 2px); padding:12px 16px; margin-bottom:10px; font-size:14px; cursor:pointer; display:flex; align-items:center; gap:10px; }
+  .option:hover{ border-color:var(--text-3); }
+  .option.selected{ border-color:var(--accent); background:var(--accent-bg); color:var(--accent-dark); font-weight:600; }
+  .quiz-actions{ display:flex; justify-content:space-between; margin-top:22px; }
+  .result-card{ max-width:460px; margin:0 auto; text-align:center; padding:32px 24px; }
+  .result-score{ font-size:34px; font-weight:700; color:var(--green); margin:8px 0; }
+  .badge{ display:inline-block; padding:4px 12px; border-radius:20px; font-size:12.5px; font-weight:600; }
+  .badge.green{ background:var(--green-bg); color:var(--green); }
+  .review-list{ text-align:start; margin:22px 0; border-top:1px solid var(--border); }
+  .review-row{ display:flex; align-items:center; gap:10px; padding:10px 4px; border-bottom:1px solid var(--border); font-size:13px; }
+  .review-row.correct svg{ color:var(--green); }
+  .review-row.wrong svg{ color:var(--red); }
+
+  /* DASHBOARD */
+  .dash-top{ display:grid; grid-template-columns:1fr 2fr; gap:18px; margin-bottom:22px; }
+  .profile-card{ padding:22px; text-align:center; }
+  .ring{ width:96px; height:96px; border-radius:50%; margin:0 auto 12px; display:flex; align-items:center; justify-content:center; position:relative; }
+  .ring-inner{ width:74px; height:74px; border-radius:50%; background:var(--surface); display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:700; }
+  .quick-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .qs-card{ padding:18px; text-align:center; }
+  .qs-card b{ display:block; font-size:22px; }
+  .qs-card span{ font-size:12px; color:var(--text-2); }
+  .dash-course-row{ display:flex; align-items:center; gap:14px; padding:14px 16px; border-bottom:1px solid var(--border); }
+  .dash-course-row:last-child{ border-bottom:none; }
+  .dash-course-row .info{ flex:1; }
+  .dash-course-row h4{ font-size:13.5px; margin:0 0 6px; }
+  .quiz-history-row{ display:flex; align-items:center; justify-content:space-between; padding:11px 16px; border-bottom:1px solid var(--border); font-size:13px; }
+  .quiz-history-row:last-child{ border-bottom:none; }
+  .cert-card{ display:flex; align-items:center; gap:16px; padding:20px; margin-top:18px; }
+  .cert-icon{ width:44px; height:44px; border-radius:calc(var(--radius) - 2px); background:var(--amber-bg); color:var(--amber); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+
+  footer{ text-align:center; padding:24px; color:var(--text-3); font-size:12.5px; }
+
+  @media (max-width:820px){
+    .lesson-layout, .cd-layout, .dash-top{ grid-template-columns:1fr; }
+    .quick-stats{ grid-template-columns:1fr 1fr; }
+    .enroll-card{ position:static; }
+
+    /* Collapse every home layout to a single stacked column on tablet/phone */
+    .home-flow,
+    html[data-layout="2"] .home-flow,
+    html[data-layout="3"] .home-flow,
+    html[data-layout="4"] .home-flow{
+      grid-template-columns:minmax(0,1fr) !important;
+      grid-template-areas:"hero" "features" "courses" "instructor" "testimonials" "cta" !important;
+    }
+    .home-flow > .blk{ min-width:0; }
+    html[data-layout="2"] .home-flow{
+      grid-template-areas:"hero" "courses" "features" "instructor" "testimonials" "cta" !important;
+    }
+    html[data-layout="3"] .blk-instructor{ position:static; }
+    html[data-layout="2"] .course-grid,
+    html[data-layout="5"] .course-grid{ grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); }
+    .hero-inner,
+    html[data-layout="2"] .hero-inner,
+    html[data-layout="5"] .hero-inner{ flex-direction:column; align-items:stretch; text-align:center !important; }
+    html[data-layout="2"] .hero, html[data-layout="5"] .hero{ text-align:center; }
+    html[data-layout="2"] .hero-actions, html[data-layout="5"] .hero-actions{ justify-content:center; }
+    html[data-layout="2"] .stats, html[data-layout="5"] .stats{ flex-direction:row; align-items:center; }
+  }
+
+  @media (max-width:560px){
+    main{ padding:20px 14px 60px; }
+    .home-flow{ gap:18px; }
+
+    /* Header: brand left, login right, scrollable nav below */
+    .topbar-inner{ flex-wrap:wrap; padding:10px 14px; gap:8px; }
+    .brand{ font-size:16px; }
+    .topbar-inner > .cta-btn.outline{ margin-inline-start:auto; padding:7px 14px; }
+    nav{ order:3; width:100%; flex-wrap:nowrap; overflow-x:auto; gap:4px; padding-bottom:2px; }
+    nav button{ flex:0 0 auto; padding:7px 12px; }
+
+    /* Control bar wraps as tidy rows */
+    .control-bar{ gap:10px 16px; padding:8px 12px; }
+    .control-group{ gap:6px; }
+
+    .hero{ padding:34px 20px; }
+    .hero h1{ font-size:24px; }
+    .hero p{ font-size:14px; }
+    .stats{ flex-wrap:wrap; gap:16px 26px; }
+
+    .section-title{ font-size:17px; }
+    .feature-grid, .testi-grid{ grid-template-columns:1fr; }
+    .course-grid{ grid-template-columns:1fr 1fr; }
+    html[data-layout="5"] .course-grid{ grid-template-columns:1fr 1fr; }
+
+    .cd-header{ padding:22px 18px; }
+    .cd-header h1{ font-size:20px; }
+    .quiz-box{ padding:22px 18px; }
+    .quiz-meta-row{ gap:16px; }
+    .video-info, .lesson-list{ padding:14px 16px; }
+
+    .instructor-card{ flex-direction:column; text-align:center; align-items:center; }
+    .cert-card{ flex-wrap:wrap; }
+    .cert-card .cta-btn{ margin-inline-start:auto; }
+  }
+
+  @media (max-width:380px){
+    .course-grid, html[data-layout="5"] .course-grid{ grid-template-columns:1fr; }
+    .quick-stats{ grid-template-columns:1fr; }
+    .hero h1{ font-size:22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sticky-head">
+  <div class="control-bar">
+    <div class="control-group layout-bar">
+      <span class="cg-label">Page layout</span>
+      <button class="layout-btn active" data-layout="1">1</button>
+      <button class="layout-btn" data-layout="2">2</button>
+      <button class="layout-btn" data-layout="3">3</button>
+      <button class="layout-btn" data-layout="4">4</button>
+      <button class="layout-btn" data-layout="5">5</button>
+    </div>
+    <div class="control-group theme-bar">
+      <span class="cg-label">Colors and theme</span>
+      <button class="theme-btn active" data-theme="sky">Sky Blue</button>
+      <button class="theme-btn" data-theme="mint">Fresh Mint</button>
+      <button class="theme-btn" data-theme="lavender">Soft Lavender</button>
+    </div>
+    <div class="control-group lang-bar">
+      <span class="cg-label">Language</span>
+      <button class="lang-btn active" data-lang="en">English</button>
+      <button class="lang-btn" data-lang="ar">العربية</button>
+    </div>
+  </div>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><div class="brand-badge">M</div>MedLearn</div>
+      <nav>
+        <button class="nav-btn active" data-page="home">Home</button>
+        <button class="nav-btn" data-page="courses">Courses</button>
+        <button class="nav-btn" data-page="coursedetails">Course details</button>
+        <button class="nav-btn" data-page="lesson">Lesson</button>
+        <button class="nav-btn" data-page="quiz">Quiz</button>
+        <button class="nav-btn" data-page="dashboard">My progress</button>
+      </nav>
+      <button class="cta-btn outline">Log in</button>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- HOME -->
+  <div class="page active" id="page-home">
+    <div class="home-bg" aria-hidden="true">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="blob b3"></div>
+      <span class="shape cross" style="width:24px; height:24px; top:20%; left:6%; color:var(--thumb1); animation:floaty 8s ease-in-out infinite;"></span>
+      <span class="shape ring" style="width:30px; height:30px; top:62%; left:4%; color:var(--thumb4); animation:floaty 11s ease-in-out 1.2s infinite;"></span>
+      <span class="shape cross" style="width:18px; height:18px; top:32%; right:6%; color:var(--thumb2); animation:floaty 9s ease-in-out .6s infinite;"></span>
+      <span class="shape pill" style="width:36px; height:15px; top:76%; right:9%; color:var(--thumb3); animation:floaty 10s ease-in-out .3s infinite;"></span>
+      <span class="shape dot" style="width:10px; height:10px; top:14%; right:22%; color:var(--thumb5); animation:floaty 7s ease-in-out 1.5s infinite;"></span>
+      <span class="shape dot" style="width:14px; height:14px; top:84%; left:16%; color:var(--thumb6); animation:floaty 12s ease-in-out .8s infinite;"></span>
+      <span class="shape ring" style="width:18px; height:18px; top:48%; right:18%; color:var(--thumb1); animation:floaty 9.5s ease-in-out 2s infinite;"></span>
+    </div>
+    <div class="home-flow">
+
+    <div class="blk blk-hero card hero">
+      <span class="shape cross" style="width:20px; height:20px; top:22%; left:7%; color:var(--thumb1); opacity:.5; animation:floaty 7s ease-in-out infinite;" aria-hidden="true"></span>
+      <span class="shape ring" style="width:24px; height:24px; bottom:24%; right:8%; color:var(--thumb4); opacity:.5; animation:floaty 9s ease-in-out 1s infinite;" aria-hidden="true"></span>
+      <span class="shape dot" style="width:9px; height:9px; top:60%; left:13%; color:var(--thumb5); opacity:.5; animation:floaty 6s ease-in-out .5s infinite;" aria-hidden="true"></span>
+      <span class="shape pill" style="width:30px; height:13px; top:16%; right:14%; color:var(--thumb2); opacity:.45; animation:floaty 8.5s ease-in-out .7s infinite;" aria-hidden="true"></span>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <h1>Learn anatomy at your own pace</h1>
+          <p>Watch recorded lectures on human anatomy and physiology, then take a short quiz after each lesson to confirm you understood it before moving on.</p>
+          <div class="hero-actions">
+            <button class="cta-btn" onclick="goPage('courses')">Start learning</button>
+            <button class="cta-btn outline" onclick="goPage('courses')">Browse all courses</button>
+          </div>
+        </div>
+        <div class="hero-stats-wrap">
+          <div class="stats">
+            <div class="stat"><b>18</b><span>video lectures</span></div>
+            <div class="stat"><b>9</b><span>quizzes</span></div>
+            <div class="stat"><b>3</b><span>courses</span></div>
+            <div class="stat"><b>240+</b><span>students enrolled</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blk blk-features">
+      <div class="feature-grid">
+        <div class="card feature">
+          <div class="fi"><svg class="icon" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></div>
+          <h4>Recorded video lectures</h4>
+          <p>Watch every lesson as many times as you need, on any device.</p>
+        </div>
+        <div class="card feature">
+          <div class="fi"><svg class="icon" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></div>
+          <h4>Quiz after every lesson</h4>
+          <p>Short quizzes check your understanding before you move on.</p>
+        </div>
+        <div class="card feature">
+          <div class="fi"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"></circle><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"></path></svg></div>
+          <h4>Certificate of completion</h4>
+          <p>Finish a course and download a certificate for your records.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="blk blk-courses">
+      <p class="section-title">Featured courses</p>
+      <div class="course-grid" id="home-course-grid"></div>
+    </div>
+
+    <div class="blk blk-instructor card instructor-card">
+      <div class="avatar lg">DN</div>
+      <div>
+        <h3>Dr. Noha</h3>
+        <p class="role">MBBS, MSc Human Anatomy - 10 years teaching experience</p>
+        <p>Dr. Noha has taught gross anatomy and physiology to medical students for over a decade. This platform brings her lecture recordings, diagrams, and practice quizzes together in one place.</p>
+      </div>
+    </div>
+
+    <div class="blk blk-testimonials">
+      <p class="section-title">What students say</p>
+      <div class="testi-grid">
+        <div class="card testi">
+          <p>"The quizzes after each video really helped me catch up before my anatomy final."</p>
+          <div class="who"><div class="avatar">LK</div><b>Layla K.</b><span style="color:var(--text-3)">- 2nd year, Cairo University</span></div>
+        </div>
+        <div class="card testi">
+          <p>"Being able to rewatch the femur and hip lecture before the practical exam made a big difference."</p>
+          <div class="who"><div class="avatar">OM</div><b>Omar M.</b><span style="color:var(--text-3)">- 1st year, Alexandria University</span></div>
+        </div>
+        <div class="card testi">
+          <p>"Clear explanations and the downloadable diagram sheets are great for revision."</p>
+          <div class="who"><div class="avatar">RH</div><b>Rana H.</b><span style="color:var(--text-3)">- 2nd year, Ain Shams University</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blk blk-cta card cta-banner">
+      <h2>Ready to master anatomy?</h2>
+      <p>Join 240+ students already learning on the platform.</p>
+      <button class="cta-btn" onclick="goPage('courses')">Browse courses</button>
+    </div>
+
+    </div>
+  </div>
+
+  <!-- COURSES -->
+  <div class="page" id="page-courses">
+    <p class="section-title">Available courses</p>
+    <p class="section-sub">Filter by topic to find what you need.</p>
+    <div class="filter-row">
+      <button class="filter-pill active">All</button>
+      <button class="filter-pill">Anatomy</button>
+      <button class="filter-pill">Physiology</button>
+      <button class="filter-pill">Histology</button>
+      <button class="filter-pill">Pathology</button>
+    </div>
+    <div class="course-grid" id="all-course-grid"></div>
+  </div>
+
+  <!-- COURSE DETAILS -->
+  <div class="page" id="page-coursedetails">
+    <div class="card cd-header">
+      <div class="tag-row"><span class="tag level">Beginner</span><span class="tag free">Free</span></div>
+      <h1>Human Anatomy I - Musculoskeletal System</h1>
+      <p>A complete walkthrough of bone structure, the pelvic girdle, and major joints, with diagrams and a quiz after each module.</p>
+      <div class="instructor-row"><div class="avatar">DN</div><span style="font-size:13px;">Taught by Dr. Noha</span></div>
+      <div class="rating"><svg class="icon" viewBox="0 0 24 24" style="stroke:var(--amber); fill:var(--amber);"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.5 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><b>4.8</b> (120 reviews) &middot; 12 lessons &middot; 4 quizzes &middot; ~4.5 hours</div>
+    </div>
+    <div class="cd-layout">
+      <div>
+        <div class="card module">
+          <div class="module-head"><span>Module 1 - Bone basics</span><span>3 lessons</span></div>
+          <div class="module-lessons">
+            <div class="lesson-row"><svg class="icon" viewBox="0 0 24 24" style="color:var(--green)"><polyline points="20 6 9 17 4 12"></polyline></svg> 1. Bone structure and classification - 12 min</div>
+            <div class="lesson-row"><svg class="icon" viewBox="0 0 24 24" style="color:var(--green)"><polyline points="20 6 9 17 4 12"></polyline></svg> 2. The pelvic girdle - 15 min</div>
+            <div class="lesson-row"><svg class="icon" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg> 3. The femur and hip joint - 18 min</div>
+          </div>
+        </div>
+        <div class="card module">
+          <div class="module-head"><span>Module 2 - Joints and movement</span><span>4 lessons</span></div>
+        </div>
+        <div class="card module">
+          <div class="module-head"><span>Module 3 - Unit assessment</span><span>1 quiz</span></div>
+        </div>
+      </div>
+      <div class="card enroll-card">
+        <p class="enroll-price">Free</p>
+        <p style="font-size:12.5px; color:var(--text-2); margin:0 0 14px;">Full lifetime access</p>
+        <button class="cta-btn" style="width:100%;" onclick="goPage('lesson')">Enroll and start</button>
+        <ul>
+          <li><svg class="icon" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg> 12 video lectures</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path></svg> Downloadable diagrams</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg> 4 practice quizzes</li>
+          <li><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"></circle><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"></path></svg> Certificate of completion</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON -->
+  <div class="page" id="page-lesson">
+    <p class="section-title">Lesson 3: The Femur and Hip Joint</p>
+    <div class="lesson-layout">
+      <div>
+        <div class="card video-box">
+          <div class="video-frame"><div class="play-circle"><svg viewBox="0 0 24 24" fill="#fff" stroke="none"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></div></div>
+          <div class="video-info">
+            <h2>The Femur and Hip Joint</h2>
+            <p>Duration 18 min &middot; Human Anatomy I - Musculoskeletal</p>
+          </div>
+          <div class="tab-row">
+            <button class="tab-btn active" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="downloads">Downloads</button>
+            <button class="tab-btn" data-tab="discussion">Discussion</button>
+          </div>
+          <div class="tab-panel active" id="tab-overview">
+            This lesson covers the anatomy of the femur, the head and neck of femur, and how it articulates with the acetabulum to form the hip joint. We also review the main ligaments that stabilize the joint.
+          </div>
+          <div class="tab-panel" id="tab-downloads">
+            <div class="file-chip"><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path></svg><span class="name">Lecture slides - Femur and hip joint.pdf</span><span style="color:var(--text-3)">2.4 MB</span></div>
+            <div class="file-chip"><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path></svg><span class="name">Labeled diagram sheet.pdf</span><span style="color:var(--text-3)">860 KB</span></div>
+          </div>
+          <div class="tab-panel" id="tab-discussion">
+            <div class="comment"><div class="avatar">OM</div><div><b>Omar M.</b><p>Is the ligamentum teres covered in the next lesson too?</p></div></div>
+            <div class="comment"><div class="avatar">DN</div><div><b>Dr. Noha</b><p>Yes, it's covered in Module 2 alongside the other hip ligaments.</p></div></div>
+            <input type="text" placeholder="Ask a question about this lesson..." style="width:100%; padding:9px 12px; border:1px solid var(--border); border-radius:calc(var(--radius) - 2px); font-family:inherit; font-size:13px; background:var(--surface); color:var(--text);">
+          </div>
+        </div>
+      </div>
+      <div class="card lesson-list">
+        <h4>Course progress</h4>
+        <p class="side-progress-label">2 of 4 lessons complete - 50%</p>
+        <div class="side-progress"><div style="width:50%"></div></div>
+        <div class="lesson-item done"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 1. Bone structure and classification</div>
+        <div class="lesson-item done"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> 2. The pelvic girdle</div>
+        <div class="lesson-item current"><svg class="icon" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg> 3. The femur and hip joint</div>
+        <div class="lesson-item locked" onclick="goPage('quiz')" style="cursor:pointer;"><svg class="icon" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg> 4. Unit quiz</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="page" id="page-quiz">
+    <p class="section-title">Quiz: The Femur and Hip Joint</p>
+    <div class="card quiz-box" id="quiz-intro-box">
+      <div class="quiz-intro">
+        <span class="badge green">Module 1 assessment</span>
+        <h2>Ready to test what you learned?</h2>
+        <p>Answer 5 questions about bone structure, the pelvic girdle, and the femur and hip joint.</p>
+        <div class="quiz-meta-row">
+          <div><b>5</b>questions</div>
+          <div><b>10 min</b>time limit</div>
+          <div><b>70%</b>to pass</div>
+        </div>
+        <button class="cta-btn" onclick="startQuiz()">Start quiz</button>
+      </div>
+    </div>
+    <div class="card quiz-box" id="quiz-question-box" style="display:none;">
+      <div class="quiz-top">
+        <span>Question 2 of 5</span>
+        <div class="quiz-progress"><div></div></div>
+      </div>
+      <p class="question">Which bone is the longest and strongest in the human body?</p>
+      <div class="option" onclick="selectOption(this)">Femur</div>
+      <div class="option" onclick="selectOption(this)">Tibia</div>
+      <div class="option" onclick="selectOption(this)">Humerus</div>
+      <p class="question" style="font-size:14px; margin-top:22px;">True or false: the acetabulum is part of the pelvic bone.</p>
+      <div class="option" onclick="selectOption(this)">True</div>
+      <div class="option" onclick="selectOption(this)">False</div>
+      <div class="quiz-actions">
+        <button class="cta-btn outline">Previous</button>
+        <button class="cta-btn" onclick="showResult()">Next</button>
+      </div>
+    </div>
+    <div class="card result-card" id="quiz-result" style="display:none;">
+      <span class="badge green">Great job</span>
+      <div class="result-score">4 / 5</div>
+      <p style="color:var(--text-2); font-size:14px; margin:0;">You scored 80% - above the 70% pass mark.</p>
+      <div class="review-list">
+        <div class="review-row correct"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Bone structure and classification</div>
+        <div class="review-row correct"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Longest bone in the body</div>
+        <div class="review-row wrong"><svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Ligaments of the hip joint</div>
+        <div class="review-row correct"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Pelvic girdle bones</div>
+        <div class="review-row correct"><svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> True or false - acetabulum</div>
+      </div>
+      <button class="cta-btn" onclick="goPage('lesson')">Back to lessons</button>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="page" id="page-dashboard">
+    <p class="section-title">My progress</p>
+    <div class="dash-top">
+      <div class="card profile-card">
+        <div class="ring" style="background:conic-gradient(var(--accent) 0% 65%, var(--surface-2) 65% 100%);">
+          <div class="ring-inner">65%</div>
+        </div>
+        <h3 style="font-size:15px; margin:0 0 2px;">Layla K.</h3>
+        <p style="font-size:12.5px; color:var(--text-2); margin:0;">3 courses enrolled</p>
+      </div>
+      <div class="quick-stats">
+        <div class="card qs-card"><b>7</b><span>lessons watched</span></div>
+        <div class="card qs-card"><b>5</b><span>quizzes passed</span></div>
+        <div class="card qs-card"><b>1</b><span>certificate earned</span></div>
+      </div>
+    </div>
+
+    <p class="section-title">Enrolled courses</p>
+    <div class="card" style="margin-bottom:28px;">
+      <div class="dash-course-row">
+        <div class="avatar" style="background:var(--thumb1); color:#fff;">A</div>
+        <div class="info"><h4>Human Anatomy I - Musculoskeletal</h4><div class="progress"><div style="width:60%"></div></div></div>
+        <span style="font-size:12.5px; color:var(--text-2);">60%</span>
+      </div>
+      <div class="dash-course-row">
+        <div class="avatar" style="background:var(--thumb2); color:#fff;">P</div>
+        <div class="info"><h4>Human Physiology</h4><div class="progress"><div style="width:20%"></div></div></div>
+        <span style="font-size:12.5px; color:var(--text-2);">20%</span>
+      </div>
+      <div class="dash-course-row">
+        <div class="avatar" style="background:var(--thumb3); color:#fff;">H</div>
+        <div class="info"><h4>Histology and Cell Biology</h4><div class="progress"><div style="width:0%"></div></div></div>
+        <span style="font-size:12.5px; color:var(--text-2);">0%</span>
+      </div>
+    </div>
+
+    <p class="section-title">Recent quiz scores</p>
+    <div class="card" style="margin-bottom:12px;">
+      <div class="quiz-history-row"><span>Bone structure and classification</span><b style="color:var(--green)">90%</b></div>
+      <div class="quiz-history-row"><span>The pelvic girdle</span><b style="color:var(--green)">80%</b></div>
+      <div class="quiz-history-row"><span>Femur and hip joint - unit quiz</span><b style="color:var(--amber)">70%</b></div>
+    </div>
+
+    <div class="card cert-card">
+      <div class="cert-icon"><svg class="icon" viewBox="0 0 24 24" style="width:22px; height:22px;"><circle cx="12" cy="8" r="6"></circle><path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"></path></svg></div>
+      <div style="flex:1;">
+        <h4 style="margin:0 0 4px; font-size:14px;">Human Anatomy I - Musculoskeletal</h4>
+        <p style="margin:0; font-size:12.5px; color:var(--text-2);">60% complete - finish 5 more lessons to unlock your certificate.</p>
+      </div>
+      <button class="cta-btn small outline">View</button>
+    </div>
+  </div>
+
+</main>
+
+<footer>This is an early mockup for review only - all data and numbers are placeholders</footer>
+
+<script>
+  var courses = [
+    {name:"Human Anatomy I - Musculoskeletal", meta:"12 lessons · 4 quizzes", level:"Beginner", cat:"Anatomy", rating:"4.8 (120)", thumb:"thumb1", progress:60},
+    {name:"Human Physiology", meta:"9 lessons · 3 quizzes", level:"Intermediate", cat:"Physiology", rating:"4.6 (74)", thumb:"thumb2", progress:20},
+    {name:"Histology and Cell Biology", meta:"6 lessons · 2 quizzes", level:"Beginner", cat:"Histology", rating:"4.9 (51)", thumb:"thumb3", progress:0},
+    {name:"General Pathology Foundations", meta:"10 lessons · 3 quizzes", level:"Intermediate", cat:"Pathology", rating:"4.7 (63)", thumb:"thumb4", progress:0},
+    {name:"Neuroanatomy Essentials", meta:"14 lessons · 5 quizzes", level:"Advanced", cat:"Anatomy", rating:"4.9 (98)", thumb:"thumb5", progress:0},
+    {name:"Cardiovascular Physiology", meta:"8 lessons · 3 quizzes", level:"Intermediate", cat:"Physiology", rating:"4.5 (40)", thumb:"thumb6", progress:0}
+  ];
+
+  function courseCard(c){
+    return '<div class="card course-card" onclick="goPage(\'coursedetails\')">' +
+      '<div class="thumb" style="background:var(--' + c.thumb + ')"><svg class="icon" viewBox="0 0 24 24" style="width:20px; height:20px; stroke:#fff;"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></div>' +
+      '<div class="course-body">' +
+        '<div class="tag-row"><span class="tag level">' + c.level + '</span>' + (c.progress===0 ? '<span class="tag free">Free</span>' : '') + '</div>' +
+        '<h3>' + c.name + '</h3>' +
+        '<p class="course-meta">' + c.meta + '</p>' +
+        '<div class="rating"><svg class="icon" viewBox="0 0 24 24" style="stroke:var(--amber); fill:var(--amber); width:13px; height:13px;"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.5 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg>' + c.rating + '</div>' +
+        '<div class="instructor-row"><div class="avatar">DN</div><span style="font-size:12px; color:var(--text-2);">Dr. Noha</span></div>' +
+        '<div class="progress"><div style="width:' + c.progress + '%"></div></div>' +
+      '</div></div>';
+  }
+
+  document.getElementById('home-course-grid').innerHTML = courses.slice(0,3).map(courseCard).join('');
+  document.getElementById('all-course-grid').innerHTML = courses.map(courseCard).join('');
+
+  function goPage(name){
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+    document.getElementById('page-' + name).classList.add('active');
+    document.querySelectorAll('.nav-btn').forEach(function(b){ b.classList.remove('active'); });
+    document.querySelector('.nav-btn[data-page="' + name + '"]').classList.add('active');
+    document.getElementById('quiz-intro-box').style.display = 'block';
+    document.getElementById('quiz-question-box').style.display = 'none';
+    document.getElementById('quiz-result').style.display = 'none';
+    window.scrollTo(0,0);
+  }
+  document.querySelectorAll('.nav-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){ goPage(btn.dataset.page); });
+  });
+
+  document.querySelectorAll('.theme-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.documentElement.setAttribute('data-theme', btn.dataset.theme);
+      document.querySelectorAll('.theme-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.layout-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.documentElement.setAttribute('data-layout', btn.dataset.layout);
+      document.querySelectorAll('.layout-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+
+  var i18n = {
+    "Page layout":"تخطيط الصفحة",
+    "Colors and theme":"الألوان والثيم",
+    "Language":"اللغة",
+    "Sky Blue":"أزرق سماوي",
+    "Fresh Mint":"أخضر نعناعي",
+    "Soft Lavender":"بنفسجي هادئ",
+    "Home":"الرئيسية",
+    "Courses":"الكورسات",
+    "Course details":"تفاصيل الكورس",
+    "Lesson":"الدرس",
+    "Quiz":"الاختبار",
+    "My progress":"تقدمي",
+    "Log in":"تسجيل الدخول",
+    "Learn anatomy at your own pace":"تعلّم التشريح بالسرعة التي تناسبك",
+    "Watch recorded lectures on human anatomy and physiology, then take a short quiz after each lesson to confirm you understood it before moving on.":"شاهد محاضرات مسجلة في التشريح ووظائف الأعضاء، ثم حل اختبارًا قصيرًا بعد كل درس للتأكد من فهمك قبل الانتقال لما بعده.",
+    "Start learning":"ابدأ التعلم",
+    "Browse all courses":"تصفح كل الكورسات",
+    "video lectures":"محاضرة فيديو",
+    "quizzes":"اختبارات",
+    "courses":"كورسات",
+    "students enrolled":"طالب مسجل",
+    "Recorded video lectures":"محاضرات فيديو مسجلة",
+    "Watch every lesson as many times as you need, on any device.":"شاهد كل درس كما تشاء من المرات، وعلى أي جهاز.",
+    "Quiz after every lesson":"اختبار بعد كل درس",
+    "Short quizzes check your understanding before you move on.":"اختبارات قصيرة تتأكد من فهمك قبل المتابعة.",
+    "Certificate of completion":"شهادة إتمام",
+    "Finish a course and download a certificate for your records.":"أكمل الكورس وحمّل شهادتك.",
+    "Featured courses":"كورسات مميزة",
+    "Human Anatomy I - Musculoskeletal":"التشريح البشري 1 - الجهاز الحركي",
+    "Human Physiology":"وظائف الأعضاء (الفسيولوجيا)",
+    "Histology and Cell Biology":"الأنسجة وبيولوجيا الخلية",
+    "General Pathology Foundations":"أساسيات علم الأمراض",
+    "Neuroanatomy Essentials":"أساسيات تشريح الجهاز العصبي",
+    "Cardiovascular Physiology":"فسيولوجيا القلب والأوعية الدموية",
+    "12 lessons · 4 quizzes":"12 درسًا · 4 اختبارات",
+    "9 lessons · 3 quizzes":"9 دروس · 3 اختبارات",
+    "6 lessons · 2 quizzes":"6 دروس · اختباران",
+    "10 lessons · 3 quizzes":"10 دروس · 3 اختبارات",
+    "14 lessons · 5 quizzes":"14 درسًا · 5 اختبارات",
+    "8 lessons · 3 quizzes":"8 دروس · 3 اختبارات",
+    "Beginner":"مبتدئ",
+    "Intermediate":"متوسط",
+    "Advanced":"متقدم",
+    "Free":"مجاني",
+    "Dr. Noha":"د. نهى",
+    "MBBS, MSc Human Anatomy - 10 years teaching experience":"بكالوريوس طب وجراحة، ماجستير تشريح بشري - خبرة 10 سنوات في التدريس",
+    "Dr. Noha has taught gross anatomy and physiology to medical students for over a decade. This platform brings her lecture recordings, diagrams, and practice quizzes together in one place.":"درّست د. نهى التشريح ووظائف الأعضاء لطلاب الطب لأكثر من عشر سنوات. تجمع هذه المنصة محاضراتها المسجلة ورسومها التوضيحية واختباراتها التدريبية في مكان واحد.",
+    "What students say":"ماذا يقول الطلاب",
+    '"The quizzes after each video really helped me catch up before my anatomy final."':'"الاختبارات بعد كل فيديو ساعدتني أراجع قبل امتحان التشريح النهائي."',
+    '"Being able to rewatch the femur and hip lecture before the practical exam made a big difference."':'"إعادة مشاهدة محاضرة عظمة الفخذ والحوض قبل الامتحان العملي فرقت معي كثيرًا."',
+    '"Clear explanations and the downloadable diagram sheets are great for revision."':'"الشرح واضح وملفات الرسوم القابلة للتحميل ممتازة للمراجعة."',
+    "Layla K.":"ليلى ك.",
+    "Omar M.":"عمر م.",
+    "Rana H.":"رنا هـ.",
+    "- 2nd year, Cairo University":"- سنة ثانية، جامعة القاهرة",
+    "- 1st year, Alexandria University":"- سنة أولى، جامعة الإسكندرية",
+    "- 2nd year, Ain Shams University":"- سنة ثانية، جامعة عين شمس",
+    "Ready to master anatomy?":"مستعد لإتقان التشريح؟",
+    "Join 240+ students already learning on the platform.":"انضم لأكثر من 240 طالبًا يتعلمون على المنصة.",
+    "Browse courses":"تصفح الكورسات",
+    "Available courses":"الكورسات المتاحة",
+    "Filter by topic to find what you need.":"صفِّ حسب الموضوع لتجد ما تحتاجه.",
+    "All":"الكل",
+    "Anatomy":"تشريح",
+    "Physiology":"فسيولوجيا",
+    "Histology":"أنسجة",
+    "Pathology":"باثولوجيا",
+    "Human Anatomy I - Musculoskeletal System":"التشريح البشري 1 - الجهاز العضلي الهيكلي",
+    "A complete walkthrough of bone structure, the pelvic girdle, and major joints, with diagrams and a quiz after each module.":"شرح كامل لتركيب العظام وحزام الحوض والمفاصل الرئيسية، مع رسوم توضيحية واختبار بعد كل وحدة.",
+    "Taught by Dr. Noha":"تدريس د. نهى",
+    "(120 reviews) · 12 lessons · 4 quizzes · ~4.5 hours":"(120 تقييمًا) · 12 درسًا · 4 اختبارات · حوالي 4.5 ساعة",
+    "Module 1 - Bone basics":"الوحدة 1 - أساسيات العظام",
+    "Module 2 - Joints and movement":"الوحدة 2 - المفاصل والحركة",
+    "Module 3 - Unit assessment":"الوحدة 3 - تقييم الوحدة",
+    "3 lessons":"3 دروس",
+    "4 lessons":"4 دروس",
+    "1 quiz":"اختبار واحد",
+    "1. Bone structure and classification - 12 min":"1. تركيب العظام وتصنيفها - 12 دقيقة",
+    "2. The pelvic girdle - 15 min":"2. حزام الحوض - 15 دقيقة",
+    "3. The femur and hip joint - 18 min":"3. عظمة الفخذ ومفصل الحوض - 18 دقيقة",
+    "Full lifetime access":"وصول كامل مدى الحياة",
+    "Enroll and start":"سجّل وابدأ",
+    "12 video lectures":"12 محاضرة فيديو",
+    "Downloadable diagrams":"رسوم توضيحية قابلة للتحميل",
+    "4 practice quizzes":"4 اختبارات تدريبية",
+    "Lesson 3: The Femur and Hip Joint":"الدرس 3: عظمة الفخذ ومفصل الحوض",
+    "The Femur and Hip Joint":"عظمة الفخذ ومفصل الحوض",
+    "Duration 18 min · Human Anatomy I - Musculoskeletal":"المدة 18 دقيقة · التشريح البشري 1 - الجهاز الحركي",
+    "Overview":"نظرة عامة",
+    "Downloads":"التحميلات",
+    "Discussion":"النقاش",
+    "This lesson covers the anatomy of the femur, the head and neck of femur, and how it articulates with the acetabulum to form the hip joint. We also review the main ligaments that stabilize the joint.":"يغطي هذا الدرس تشريح عظمة الفخذ ورأسها وعنقها، وكيف تتمفصل مع الحُق لتكوين مفصل الحوض، كما نراجع الأربطة الرئيسية المثبتة للمفصل.",
+    "Lecture slides - Femur and hip joint.pdf":"شرائح المحاضرة - عظمة الفخذ ومفصل الحوض.pdf",
+    "Labeled diagram sheet.pdf":"ورقة الرسم التوضيحي المعنون.pdf",
+    "Is the ligamentum teres covered in the next lesson too?":"هل الرباط المدور مشمول في الدرس القادم أيضًا؟",
+    "Yes, it's covered in Module 2 alongside the other hip ligaments.":"نعم، مشمول في الوحدة 2 مع باقي أربطة مفصل الحوض.",
+    "Ask a question about this lesson...":"اسأل سؤالًا عن هذا الدرس...",
+    "Course progress":"تقدم الكورس",
+    "2 of 4 lessons complete - 50%":"أكملت درسين من 4 - 50%",
+    "1. Bone structure and classification":"1. تركيب العظام وتصنيفها",
+    "2. The pelvic girdle":"2. حزام الحوض",
+    "3. The femur and hip joint":"3. عظمة الفخذ ومفصل الحوض",
+    "4. Unit quiz":"4. اختبار الوحدة",
+    "Quiz: The Femur and Hip Joint":"اختبار: عظمة الفخذ ومفصل الحوض",
+    "Module 1 assessment":"تقييم الوحدة 1",
+    "Ready to test what you learned?":"جاهز لاختبار ما تعلمته؟",
+    "Answer 5 questions about bone structure, the pelvic girdle, and the femur and hip joint.":"أجب عن 5 أسئلة عن تركيب العظام وحزام الحوض وعظمة الفخذ ومفصل الحوض.",
+    "questions":"أسئلة",
+    "10 min":"10 دقائق",
+    "time limit":"الوقت المحدد",
+    "to pass":"درجة النجاح",
+    "Start quiz":"ابدأ الاختبار",
+    "Question 2 of 5":"السؤال 2 من 5",
+    "Which bone is the longest and strongest in the human body?":"ما أطول وأقوى عظمة في جسم الإنسان؟",
+    "Femur":"عظمة الفخذ",
+    "Tibia":"عظمة الظنبوب (القصبة)",
+    "Humerus":"عظمة العضد",
+    "True or false: the acetabulum is part of the pelvic bone.":"صح أم خطأ: الحُق جزء من عظمة الحوض.",
+    "True":"صح",
+    "False":"خطأ",
+    "Previous":"السابق",
+    "Next":"التالي",
+    "Great job":"أحسنت",
+    "You scored 80% - above the 70% pass mark.":"حصلت على 80% - أعلى من درجة النجاح 70%.",
+    "Bone structure and classification":"تركيب العظام وتصنيفها",
+    "Longest bone in the body":"أطول عظمة في الجسم",
+    "Ligaments of the hip joint":"أربطة مفصل الحوض",
+    "Pelvic girdle bones":"عظام حزام الحوض",
+    "True or false - acetabulum":"صح أم خطأ - الحُق",
+    "Back to lessons":"العودة للدروس",
+    "3 courses enrolled":"مسجلة في 3 كورسات",
+    "lessons watched":"دروس مشاهدة",
+    "quizzes passed":"اختبارات ناجحة",
+    "certificate earned":"شهادة محصلة",
+    "Enrolled courses":"الكورسات المسجلة",
+    "Recent quiz scores":"نتائج الاختبارات الأخيرة",
+    "The pelvic girdle":"حزام الحوض",
+    "Femur and hip joint - unit quiz":"عظمة الفخذ ومفصل الحوض - اختبار الوحدة",
+    "60% complete - finish 5 more lessons to unlock your certificate.":"أكملت 60% - أنهِ 5 دروس أخرى للحصول على شهادتك.",
+    "View":"عرض",
+    "This is an early mockup for review only - all data and numbers are placeholders":"هذا تصميم أولي للعرض فقط - كل البيانات والأرقام تجريبية"
+  };
+  var i18nRev = {};
+  Object.keys(i18n).forEach(function(k){ i18nRev[i18n[k]] = k; });
+
+  function setLang(lang){
+    var map = lang === 'ar' ? i18n : i18nRev;
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    var node;
+    while((node = walker.nextNode())){
+      if(node.parentElement && node.parentElement.tagName === 'SCRIPT') continue;
+      var t = node.nodeValue.trim();
+      if(t && Object.prototype.hasOwnProperty.call(map, t)){
+        node.nodeValue = node.nodeValue.replace(t, map[t]);
+      }
+    }
+    document.querySelectorAll('input[placeholder]').forEach(function(inp){
+      var p = inp.getAttribute('placeholder');
+      if(p && Object.prototype.hasOwnProperty.call(map, p)) inp.setAttribute('placeholder', map[p]);
+    });
+    document.documentElement.setAttribute('lang', lang);
+    document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      setLang(btn.dataset.lang);
+      document.querySelectorAll('.lang-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.tab-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  function selectOption(el){
+    el.parentElement.querySelectorAll('.option').forEach(function(o){ o.classList.remove('selected'); });
+    el.classList.add('selected');
+  }
+  function startQuiz(){
+    document.getElementById('quiz-intro-box').style.display = 'none';
+    document.getElementById('quiz-question-box').style.display = 'block';
+  }
+  function showResult(){
+    document.getElementById('quiz-question-box').style.display = 'none';
+    document.getElementById('quiz-result').style.display = 'block';
+  }
+
+  document.querySelectorAll('.filter-pill').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.filter-pill').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
