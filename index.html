@@ -176,6 +176,47 @@
   .stat b{ display:block; font-size:28px; }
   .stat span{ font-size:14px; color:var(--text-2); }
 
+  /* hero floating preview card */
+  .hero-illu{ position:relative; width:300px; max-width:82vw; margin:0 auto 30px; }
+  .hp-card{ background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden;
+    box-shadow:0 18px 44px rgba(30,60,110,.16); animation:heroFloat 6s ease-in-out infinite; }
+  .hp-thumb{ height:118px; background:linear-gradient(135deg,var(--accent),#6aa4ff); display:flex; align-items:center; justify-content:center; position:relative; }
+  .hp-thumb::after{ content:''; position:absolute; inset:0; background:radial-gradient(circle at 70% 20%, rgba(255,255,255,.25), transparent 55%); }
+  .hp-play{ width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,.28); display:flex; align-items:center; justify-content:center; position:relative; z-index:1; }
+  .hp-play svg{ width:20px; height:20px; }
+  .hp-body{ padding:14px 16px; text-align:start; }
+  .hp-name{ font-weight:600; font-size:14.5px; margin:0 0 6px; }
+  .hp-meta{ font-size:12px; color:var(--text-2); margin:0 0 12px; }
+  .hp-progress{ height:6px; background:var(--surface-2); border-radius:6px; overflow:hidden; margin-bottom:12px; }
+  .hp-progress > div{ height:100%; width:65%; background:var(--accent); border-radius:6px; }
+  .hp-foot{ display:flex; align-items:center; justify-content:space-between; }
+  .hp-badge{ display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:600; background:var(--green-bg); color:var(--green); padding:4px 10px; border-radius:20px; }
+  .hp-badge svg{ width:13px; height:13px; }
+  .hp-pct{ font-size:12.5px; font-weight:600; color:var(--text-2); }
+  .hp-chip{ position:absolute; background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 24px rgba(30,60,110,.14); }
+  .hp-chip svg{ width:22px; height:22px; }
+  .hp-chip.c1{ top:-16px; inset-inline-start:-20px; color:#e0654a; animation:heroFloat 5s ease-in-out .3s infinite; }
+  .hp-chip.c2{ bottom:-14px; inset-inline-end:-18px; color:var(--accent); animation:heroFloat 7s ease-in-out .9s infinite reverse; }
+  @keyframes heroFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-11px); } }
+
+  /* scroll reveal */
+  body.reveal-on .reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+  body.reveal-on .reveal.in{ opacity:1; transform:none; }
+
+  /* card hover lift */
+  .course-card{ transition:transform .18s ease, box-shadow .28s ease; }
+  .course-card:hover{ box-shadow:0 16px 36px rgba(30,60,110,.16); }
+  .feature, .testi{ transition:transform .18s ease, box-shadow .28s ease; }
+  .feature:hover, .testi:hover{ transform:translateY(-3px); box-shadow:0 14px 32px rgba(30,60,110,.12); }
+
+  /* button ripple */
+  .cta-btn{ position:relative; overflow:hidden; }
+  .cta-btn .rp{ position:absolute; border-radius:50%; transform:scale(0); background:rgba(255,255,255,.5); animation:btnRipple .6s ease-out; pointer-events:none; }
+  .cta-btn.outline .rp{ background:rgba(59,130,246,.22); }
+  @keyframes btnRipple{ to{ transform:scale(3); opacity:0; } }
+
   /* Layout 2 - courses first, split hero */
   html[data-layout="2"] .home-flow{ grid-template-areas:"hero" "courses" "features" "instructor" "testimonials" "cta"; }
   html[data-layout="2"] .hero-inner, html[data-layout="5"] .hero-inner{ display:flex; align-items:center; justify-content:space-between; gap:32px; text-align:start; }
@@ -404,6 +445,7 @@
     .layout-bar button{ width:34px; height:34px; font-size:13.5px; }
 
     .hero{ padding:34px 20px; }
+    .hero-illu{ width:240px; margin-bottom:24px; }
     .hero h1{ font-size:30px; }
     .hero p{ font-size:16px; }
     .stats{ flex-wrap:wrap; gap:16px 26px; }
@@ -754,6 +796,24 @@
       <span class="shape pill" style="width:30px; height:13px; top:16%; right:14%; color:var(--thumb2); opacity:.45; animation:floaty 8.5s ease-in-out .7s infinite;" aria-hidden="true"></span>
       <div class="hero-inner">
         <div class="hero-text">
+          <div class="hero-illu" aria-hidden="true">
+            <div class="hp-card">
+              <div class="hp-thumb">
+                <span class="hp-play"><svg viewBox="0 0 24 24" fill="#fff" stroke="none"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></span>
+              </div>
+              <div class="hp-body">
+                <p class="hp-name">The Femur and Hip Joint</p>
+                <p class="hp-meta">Lesson 3 · 18 min</p>
+                <div class="hp-progress"><div></div></div>
+                <div class="hp-foot">
+                  <span class="hp-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>Quiz passed</span>
+                  <span class="hp-pct">65%</span>
+                </div>
+              </div>
+            </div>
+            <div class="hp-chip c1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20 C4 14 3 9 6 6.5 C8.4 4.5 11 6 12 8 C13 6 15.6 4.5 18 6.5 C21 9 20 14 12 20 Z"></path></svg></div>
+            <div class="hp-chip c2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3 C16 8 8 12 18 17 M18 3 C8 8 16 12 6 17"></path></svg></div>
+          </div>
           <h1>Learn anatomy at your own pace</h1>
           <p>Watch recorded lectures on human anatomy and physiology, then take a short quiz after each lesson to confirm you understood it before moving on.</p>
           <div class="hero-actions">
@@ -772,7 +832,7 @@
       </div>
     </div>
 
-    <div class="blk blk-features">
+    <div class="blk blk-features reveal">
       <div class="feature-grid">
         <div class="card feature">
           <div class="fi"><svg class="icon" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg></div>
@@ -792,12 +852,12 @@
       </div>
     </div>
 
-    <div class="blk blk-courses">
+    <div class="blk blk-courses reveal">
       <p class="section-title">Featured courses</p>
       <div class="course-grid" id="home-course-grid"></div>
     </div>
 
-    <div class="blk blk-instructor card instructor-card">
+    <div class="blk blk-instructor card instructor-card reveal">
       <div class="avatar lg">DN</div>
       <div>
         <h3>Dr. Noha</h3>
@@ -806,7 +866,7 @@
       </div>
     </div>
 
-    <div class="blk blk-testimonials">
+    <div class="blk blk-testimonials reveal">
       <p class="section-title">What students say</p>
       <div class="testi-grid">
         <div class="card testi">
@@ -824,7 +884,7 @@
       </div>
     </div>
 
-    <div class="blk blk-cta card cta-banner">
+    <div class="blk blk-cta card cta-banner reveal">
       <h2>Ready to master anatomy?</h2>
       <p>Join 240+ students already learning on the platform.</p>
       <button class="cta-btn" onclick="goPage('courses')">Browse courses</button>
@@ -1180,6 +1240,8 @@
     "4 practice quizzes":"4 اختبارات تدريبية",
     "Lesson 3: The Femur and Hip Joint":"الدرس 3: عظمة الفخذ ومفصل الحوض",
     "The Femur and Hip Joint":"عظمة الفخذ ومفصل الحوض",
+    "Lesson 3 · 18 min":"الدرس 3 · 18 دقيقة",
+    "Quiz passed":"اجتزت الاختبار",
     "Duration 18 min · Human Anatomy I - Musculoskeletal":"المدة 18 دقيقة · التشريح البشري 1 - الجهاز الحركي",
     "Overview":"نظرة عامة",
     "Downloads":"التحميلات",
@@ -1292,6 +1354,45 @@
       document.querySelectorAll('.filter-pill').forEach(function(b){ b.classList.remove('active'); });
       btn.classList.add('active');
     });
+  });
+
+  /* scroll reveal (progressive enhancement: only hides if supported) */
+  if('IntersectionObserver' in window){
+    document.body.classList.add('reveal-on');
+    function revealInView(){
+      document.querySelectorAll('.reveal:not(.in)').forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if(r.top < window.innerHeight * 0.92 && r.bottom > 0){ el.classList.add('in'); }
+      });
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold:0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    window.addEventListener('scroll', revealInView, { passive:true });
+    window.addEventListener('resize', revealInView);
+    revealInView();
+    /* safety: never leave content permanently hidden */
+    setTimeout(function(){ document.querySelectorAll('.reveal:not(.in)').forEach(function(el){
+      var r = el.getBoundingClientRect(); if(r.top < window.innerHeight && r.bottom > 0) el.classList.add('in');
+    }); }, 1200);
+  }
+
+  /* button ripple on all primary/outline CTAs */
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest ? e.target.closest('.cta-btn') : null;
+    if(!btn) return;
+    var r = btn.getBoundingClientRect();
+    var span = document.createElement('span');
+    span.className = 'rp';
+    var size = Math.max(r.width, r.height);
+    span.style.width = span.style.height = size + 'px';
+    span.style.left = (e.clientX - r.left - size/2) + 'px';
+    span.style.top = (e.clientY - r.top - size/2) + 'px';
+    btn.appendChild(span);
+    setTimeout(function(){ span.remove(); }, 600);
   });
 </script>
 
