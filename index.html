@@ -435,7 +435,7 @@
   body.landing-open{ overflow:hidden; }
   #landing{
     position:fixed; inset:0; z-index:9999;
-    background:#080d14; color:#E8F4FD;
+    background:linear-gradient(180deg,#F7FBFF 0%,#EAF2FB 100%); color:#1C2B3A;
     font-family:'Inter', sans-serif;
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     overflow:hidden; text-align:center; padding:24px;
@@ -445,7 +445,7 @@
   #landing[dir="rtl"]{ font-family:'Cairo', sans-serif; }
   #landing[dir="rtl"] .l-title, #landing[dir="rtl"] .l-sub, #landing[dir="rtl"] .l-btn, #landing[dir="rtl"] .l-logo span{ font-family:'Cairo', sans-serif; }
   #landing .l-blackout{
-    position:absolute; inset:0; background:#000; z-index:6; pointer-events:none;
+    position:absolute; inset:0; background:#F7FBFF; z-index:6; pointer-events:none;
     animation:lBlackout 1s ease forwards;
   }
   @keyframes lBlackout{ 0%,32%{opacity:1;} 100%{opacity:0; visibility:hidden;} }
@@ -454,38 +454,38 @@
   #landing .l-bg{ position:absolute; inset:0; z-index:0; opacity:0; animation:lBgFade 1.2s ease .35s forwards; }
   @keyframes lBgFade{ to{opacity:1;} }
   #landing .l-grid{
-    position:absolute; inset:-2px; opacity:.5;
-    background-image:linear-gradient(rgba(0,212,255,.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,212,255,.06) 1px, transparent 1px);
+    position:absolute; inset:-2px; opacity:.7;
+    background-image:linear-gradient(rgba(59,130,246,.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,.09) 1px, transparent 1px);
     background-size:46px 46px; mask-image:radial-gradient(ellipse 80% 70% at 50% 45%, #000 40%, transparent 85%);
     -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 45%, #000 40%, transparent 85%);
     animation:lGrid 40s linear infinite;
   }
   @keyframes lGrid{ to{ background-position:46px 46px, 46px 46px; } }
-  #landing .l-glow{ position:absolute; border-radius:50%; filter:blur(70px); opacity:.5; }
-  #landing .l-glow.g1{ width:520px; height:520px; background:#00D4FF; top:-160px; left:8%; opacity:.22; animation:lFloat 14s ease-in-out infinite alternate; }
-  #landing .l-glow.g2{ width:460px; height:460px; background:#4F8CFF; bottom:-150px; right:6%; opacity:.20; animation:lFloat 18s ease-in-out infinite alternate-reverse; }
-  #landing .l-glow.g3{ width:340px; height:340px; background:#00E676; top:40%; left:42%; opacity:.10; animation:lFloat 22s ease-in-out infinite alternate; }
+  #landing .l-glow{ position:absolute; border-radius:50%; filter:blur(80px); }
+  #landing .l-glow.g1{ width:520px; height:520px; background:#00D4FF; top:-160px; left:8%; opacity:.16; animation:lFloat 14s ease-in-out infinite alternate; }
+  #landing .l-glow.g2{ width:460px; height:460px; background:#4F8CFF; bottom:-150px; right:6%; opacity:.16; animation:lFloat 18s ease-in-out infinite alternate-reverse; }
+  #landing .l-glow.g3{ width:340px; height:340px; background:#00E676; top:40%; left:42%; opacity:.08; animation:lFloat 22s ease-in-out infinite alternate; }
 
-  #landing .l-sym{ position:absolute; color:#00D4FF; opacity:.16; filter:blur(.3px); }
+  #landing .l-sym{ position:absolute; color:#4F8CFF; opacity:.3; }
   #landing .l-sym svg{ display:block; width:100%; height:100%; }
-  #landing .l-sym.dna{ width:70px; height:150px; top:16%; left:9%; opacity:.22; animation:lFloat 12s ease-in-out infinite alternate; }
-  #landing .l-sym.brain{ width:120px; height:120px; top:22%; right:11%; color:#4F8CFF; opacity:.16; animation:lFloat 15s ease-in-out infinite alternate-reverse; }
-  #landing .l-sym.heart{ width:80px; height:80px; bottom:20%; left:14%; color:#00D4FF; opacity:.18; animation:lPulse 4s ease-in-out infinite; }
-  #landing .l-sym.molecule{ width:110px; height:110px; bottom:15%; right:13%; opacity:.16; animation:lSpin 46s linear infinite; }
-  #landing .l-sym.cross{ width:54px; height:54px; top:60%; left:4%; color:#00E676; opacity:.18; animation:lFloat 10s ease-in-out infinite alternate; }
-  #landing .l-sym.cross2{ width:38px; height:38px; top:12%; left:46%; color:#4F8CFF; opacity:.14; animation:lFloat 9s ease-in-out .5s infinite alternate-reverse; }
-  #landing .l-ecg{ position:absolute; left:0; right:0; bottom:8%; height:120px; opacity:.5; }
+  #landing .l-sym.dna{ width:70px; height:150px; top:16%; left:9%; color:#3B82F6; opacity:.32; animation:lFloat 12s ease-in-out infinite alternate; }
+  #landing .l-sym.brain{ width:120px; height:120px; top:22%; right:11%; color:#4F8CFF; opacity:.24; animation:lFloat 15s ease-in-out infinite alternate-reverse; }
+  #landing .l-sym.heart{ width:80px; height:80px; bottom:20%; left:14%; color:#3B82F6; opacity:.3; animation:lPulse 4s ease-in-out infinite; }
+  #landing .l-sym.molecule{ width:110px; height:110px; bottom:15%; right:13%; color:#4F8CFF; opacity:.26; animation:lSpin 46s linear infinite; }
+  #landing .l-sym.cross{ width:54px; height:54px; top:60%; left:4%; color:#00C266; opacity:.3; animation:lFloat 10s ease-in-out infinite alternate; }
+  #landing .l-sym.cross2{ width:38px; height:38px; top:12%; left:46%; color:#4F8CFF; opacity:.24; animation:lFloat 9s ease-in-out .5s infinite alternate-reverse; }
+  #landing .l-ecg{ position:absolute; left:0; right:0; bottom:8%; height:120px; opacity:.6; }
   #landing .l-ecg svg{ width:100%; height:100%; }
-  #landing .l-ecg path{ stroke:#00D4FF; stroke-width:2; fill:none; filter:drop-shadow(0 0 6px rgba(0,212,255,.6));
+  #landing .l-ecg path{ stroke:#3B82F6; stroke-width:2; fill:none; filter:drop-shadow(0 0 5px rgba(59,130,246,.4));
     stroke-dasharray:1400; stroke-dashoffset:1400; animation:lEcg 5.5s linear .8s infinite; }
   @keyframes lEcg{ to{ stroke-dashoffset:-1400; } }
-  #landing .l-particle{ position:absolute; width:4px; height:4px; border-radius:50%; background:#00D4FF; opacity:.5;
-    box-shadow:0 0 8px 1px rgba(0,212,255,.7); animation:lDrift linear infinite; }
+  #landing .l-particle{ position:absolute; width:4px; height:4px; border-radius:50%; background:#3B82F6; opacity:.5;
+    box-shadow:0 0 8px 1px rgba(59,130,246,.5); animation:lDrift linear infinite; }
 
   @keyframes lFloat{ 0%{transform:translate(0,0);} 100%{transform:translate(24px,-30px);} }
   @keyframes lSpin{ to{transform:rotate(360deg);} }
-  @keyframes lPulse{ 0%,100%{transform:scale(1); opacity:.18;} 50%{transform:scale(1.12); opacity:.3;} }
+  @keyframes lPulse{ 0%,100%{transform:scale(1); opacity:.28;} 50%{transform:scale(1.12); opacity:.5;} }
   @keyframes lDrift{ 0%{transform:translateY(0); opacity:0;} 15%{opacity:.6;} 85%{opacity:.5;} 100%{transform:translateY(-120px); opacity:0;} }
 
   /* ---- foreground content ---- */
@@ -494,51 +494,53 @@
 
   #landing .l-lang{ position:absolute; top:22px; inset-inline-end:24px; z-index:7;
     display:flex; gap:6px; padding:5px; border-radius:40px;
-    background:rgba(15,25,35,.6); border:1px solid rgba(0,212,255,.18); backdrop-filter:blur(12px);
+    background:rgba(255,255,255,.7); border:1px solid rgba(59,130,246,.2); backdrop-filter:blur(12px);
+    box-shadow:0 6px 20px rgba(59,130,246,.1);
     opacity:0; animation:lFadeUp .7s ease 1.5s forwards; }
-  #landing .l-lang button{ border:none; background:none; color:#9db4c9; cursor:pointer;
+  #landing .l-lang button{ border:none; background:none; color:#5B7085; cursor:pointer;
     font-family:inherit; font-size:13px; padding:6px 14px; border-radius:30px; display:flex; align-items:center; gap:6px; transition:.25s; }
-  #landing .l-lang button.active{ background:linear-gradient(135deg,#00D4FF,#4F8CFF); color:#04121b; font-weight:600; box-shadow:0 4px 16px rgba(0,212,255,.35); }
+  #landing .l-lang button.active{ background:linear-gradient(135deg,#3B82F6,#4F8CFF); color:#fff; font-weight:600; box-shadow:0 4px 16px rgba(59,130,246,.35); }
 
   #landing .l-logo{ display:flex; align-items:center; gap:12px; opacity:0;
     animation:lScaleIn 1s cubic-bezier(.2,.8,.2,1) .55s forwards; }
   #landing .l-logo .badge{ width:52px; height:52px; border-radius:16px;
-    background:linear-gradient(135deg,#00D4FF,#4F8CFF); display:flex; align-items:center; justify-content:center;
-    box-shadow:0 8px 30px rgba(0,212,255,.4); }
+    background:linear-gradient(135deg,#3B82F6,#4F8CFF); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 26px rgba(59,130,246,.35); }
   #landing .l-logo .badge svg{ width:30px; height:30px; }
   #landing .l-logo span{ font-size:19px; font-weight:600; letter-spacing:.3px; }
 
   #landing .l-illu{ width:300px; max-width:78vw; opacity:0;
     animation:lFadeUp 1s ease .95s forwards, lHover 7s ease-in-out 2s infinite; }
-  #landing .l-illu svg{ width:100%; height:auto; display:block; filter:drop-shadow(0 20px 50px rgba(0,212,255,.22)); }
+  #landing .l-illu svg{ width:100%; height:auto; display:block; filter:drop-shadow(0 20px 44px rgba(59,130,246,.18)); }
   @keyframes lHover{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-12px);} }
 
   #landing .l-title{ opacity:0; animation:lFadeUp .9s ease .85s forwards; margin:0; }
   #landing .l-title .main{ font-size:38px; font-weight:700; line-height:1.15;
-    background:linear-gradient(120deg,#E8F4FD 20%,#00D4FF 60%,#4F8CFF 100%);
+    background:linear-gradient(120deg,#1C2B3A 15%,#3B82F6 60%,#4F8CFF 100%);
     -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
-  #landing .l-title .alt{ display:block; margin-top:6px; font-size:17px; font-weight:500; color:#7fa3c4; letter-spacing:.5px; }
-  #landing .l-sub{ font-size:16px; color:#a9c2da; max-width:520px; margin:0; opacity:0;
+  #landing .l-title .alt{ display:block; margin-top:6px; font-size:17px; font-weight:500; color:#5B7085; letter-spacing:.5px; }
+  #landing .l-sub{ font-size:16px; color:#5B7085; max-width:520px; margin:0; opacity:0;
     animation:lFadeUp .9s ease 1.15s forwards; }
 
   #landing .l-actions{ display:flex; gap:14px; margin-top:10px; flex-wrap:wrap; justify-content:center;
     opacity:0; animation:lFadeUp .8s ease 1.5s forwards; }
   #landing .l-btn{ position:relative; overflow:hidden; border:none; cursor:pointer; font-family:inherit;
     font-size:15px; font-weight:600; padding:14px 30px; border-radius:14px; transition:transform .2s ease, box-shadow .3s ease; }
-  #landing .l-btn.primary{ color:#04121b; background:linear-gradient(135deg,#00D4FF,#4F8CFF);
-    box-shadow:0 8px 26px rgba(0,212,255,.35); }
-  #landing .l-btn.primary:hover{ transform:scale(1.03); box-shadow:0 12px 40px rgba(0,212,255,.55); }
-  #landing .l-btn.secondary{ color:#cfe6f7; background:rgba(15,25,35,.6);
-    border:1px solid rgba(0,212,255,.25); backdrop-filter:blur(10px); }
-  #landing .l-btn.secondary:hover{ transform:scale(1.03); border-color:rgba(0,212,255,.6); box-shadow:0 8px 26px rgba(0,212,255,.2); }
-  #landing .l-btn .ripple{ position:absolute; border-radius:50%; transform:scale(0); background:rgba(255,255,255,.45);
+  #landing .l-btn.primary{ color:#fff; background:linear-gradient(135deg,#3B82F6,#4F8CFF);
+    box-shadow:0 8px 24px rgba(59,130,246,.32); }
+  #landing .l-btn.primary:hover{ transform:scale(1.03); box-shadow:0 12px 36px rgba(59,130,246,.48); }
+  #landing .l-btn.secondary{ color:#1D4FB8; background:rgba(255,255,255,.8);
+    border:1px solid rgba(59,130,246,.3); backdrop-filter:blur(10px); }
+  #landing .l-btn.secondary:hover{ transform:scale(1.03); border-color:rgba(59,130,246,.6); box-shadow:0 8px 24px rgba(59,130,246,.18); }
+  #landing .l-btn .ripple{ position:absolute; border-radius:50%; transform:scale(0); background:rgba(255,255,255,.5);
     animation:lRipple .6s ease-out; pointer-events:none; }
+  #landing .l-btn.secondary .ripple{ background:rgba(59,130,246,.25); }
   @keyframes lRipple{ to{ transform:scale(3.2); opacity:0; } }
 
-  #landing .l-hint{ margin-top:8px; font-size:12px; color:#5f7996; opacity:0; animation:lFadeUp .8s ease 1.7s forwards; }
+  #landing .l-hint{ margin-top:8px; font-size:12px; color:#93A7BB; opacity:0; animation:lFadeUp .8s ease 1.7s forwards; }
 
   #landing .l-burst{ position:absolute; z-index:8; width:20px; height:20px; border-radius:50%; left:50%; top:65%;
-    background:radial-gradient(circle,#00D4FF,rgba(0,212,255,0)); transform:translate(-50%,-50%) scale(0); opacity:.9; }
+    background:radial-gradient(circle,#4F8CFF,rgba(79,140,255,0)); transform:translate(-50%,-50%) scale(0); opacity:.85; }
 
   @keyframes lFadeUp{ from{opacity:0; transform:translateY(22px);} to{opacity:1; transform:translateY(0);} }
   @keyframes lScaleIn{ from{opacity:0; transform:scale(.8);} to{opacity:1; transform:scale(1);} }
@@ -627,45 +629,45 @@
 
   <div class="l-inner">
     <div class="l-logo">
-      <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="#04121b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M12 8v6M9 11h6"/></svg></div>
+      <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M12 8v6M9 11h6"/></svg></div>
       <span>MedLearn</span>
     </div>
 
     <div class="l-illu" aria-hidden="true">
       <svg viewBox="0 0 260 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="130" cy="210" rx="92" ry="16" fill="#00D4FF" fill-opacity=".08"/>
-        <circle cx="130" cy="120" r="96" fill="#00D4FF" fill-opacity=".05" stroke="#00D4FF" stroke-opacity=".18"/>
-        <circle cx="130" cy="120" r="72" stroke="#4F8CFF" stroke-opacity=".14" stroke-dasharray="4 8"/>
+        <ellipse cx="130" cy="210" rx="92" ry="16" fill="#4F8CFF" fill-opacity=".1"/>
+        <circle cx="130" cy="120" r="96" fill="#3B82F6" fill-opacity=".05" stroke="#4F8CFF" stroke-opacity=".28"/>
+        <circle cx="130" cy="120" r="72" stroke="#4F8CFF" stroke-opacity=".22" stroke-dasharray="4 8"/>
         <!-- floating chips -->
-        <g opacity=".95">
-          <rect x="24" y="52" width="40" height="40" rx="12" fill="#0f1923" stroke="#00D4FF" stroke-opacity=".35"/>
-          <path d="M36 64 c14 8 -2 12 12 20 M52 64 c-14 8 2 12 -12 20" stroke="#00D4FF" stroke-width="2" fill="none"/>
+        <g opacity="1">
+          <rect x="24" y="52" width="40" height="40" rx="12" fill="#FFFFFF" stroke="#3B82F6" stroke-opacity=".5"/>
+          <path d="M36 64 c14 8 -2 12 12 20 M52 64 c-14 8 2 12 -12 20" stroke="#3B82F6" stroke-width="2" fill="none"/>
         </g>
-        <g opacity=".95">
-          <rect x="196" y="46" width="42" height="42" rx="12" fill="#0f1923" stroke="#4F8CFF" stroke-opacity=".35"/>
+        <g opacity="1">
+          <rect x="196" y="46" width="42" height="42" rx="12" fill="#FFFFFF" stroke="#4F8CFF" stroke-opacity=".5"/>
           <path d="M217 58 c-8 -6 -18 2 -14 10 -6 1 -6 10 1 11 1 7 12 7 13 1 7 4 15 -3 11 -10 5 -3 3 -12 -4 -12 -1 -6 -12 -7 -14 0" stroke="#4F8CFF" stroke-width="1.8" fill="none"/>
         </g>
-        <g opacity=".95">
-          <rect x="26" y="150" width="42" height="42" rx="12" fill="#0f1923" stroke="#00E676" stroke-opacity=".35"/>
-          <path d="M47 182 c-16 -11 -20 -21 -13 -27 5 -5 12 -1 13 4 1 -5 8 -9 13 -4 7 6 3 16 -13 27 Z" stroke="#00E676" stroke-width="1.8" fill="none"/>
+        <g opacity="1">
+          <rect x="26" y="150" width="42" height="42" rx="12" fill="#FFFFFF" stroke="#00C266" stroke-opacity=".5"/>
+          <path d="M47 182 c-16 -11 -20 -21 -13 -27 5 -5 12 -1 13 4 1 -5 8 -9 13 -4 7 6 3 16 -13 27 Z" stroke="#00C266" stroke-width="1.8" fill="none"/>
         </g>
-        <g opacity=".95">
-          <rect x="196" y="150" width="44" height="34" rx="8" fill="#0f1923" stroke="#00D4FF" stroke-opacity=".35"/>
-          <rect x="203" y="156" width="30" height="18" rx="2" stroke="#00D4FF" stroke-opacity=".6" fill="none"/>
-          <rect x="196" y="184" width="44" height="4" rx="2" fill="#00D4FF" fill-opacity=".3"/>
+        <g opacity="1">
+          <rect x="196" y="150" width="44" height="34" rx="8" fill="#FFFFFF" stroke="#3B82F6" stroke-opacity=".5"/>
+          <rect x="203" y="156" width="30" height="18" rx="2" stroke="#3B82F6" stroke-opacity=".7" fill="none"/>
+          <rect x="196" y="184" width="44" height="4" rx="2" fill="#3B82F6" fill-opacity=".4"/>
         </g>
         <!-- student figure -->
         <g>
-          <path d="M92 208 v-30 a38 38 0 0 1 76 0 v30 Z" fill="#0f1923" stroke="#4F8CFF" stroke-opacity=".5"/>
-          <path d="M92 208 v-30 a38 38 0 0 1 38 -38 v68 Z" fill="#00D4FF" fill-opacity=".08"/>
-          <circle cx="130" cy="118" r="26" fill="#12202e" stroke="#00D4FF" stroke-opacity=".55"/>
-          <path d="M110 112 a20 20 0 0 1 40 0 v-6 a20 20 0 0 0 -40 0 Z" fill="#4F8CFF" fill-opacity=".4"/>
+          <path d="M92 208 v-30 a38 38 0 0 1 76 0 v30 Z" fill="#FFFFFF" stroke="#4F8CFF" stroke-opacity=".7"/>
+          <path d="M92 208 v-30 a38 38 0 0 1 38 -38 v68 Z" fill="#3B82F6" fill-opacity=".08"/>
+          <circle cx="130" cy="118" r="26" fill="#EAF2FB" stroke="#3B82F6" stroke-opacity=".6"/>
+          <path d="M110 112 a20 20 0 0 1 40 0 v-6 a20 20 0 0 0 -40 0 Z" fill="#4F8CFF" fill-opacity=".5"/>
           <!-- tablet -->
-          <rect x="104" y="170" width="52" height="36" rx="6" transform="rotate(-8 130 188)" fill="#0b141d" stroke="#00D4FF" stroke-opacity=".7"/>
-          <path d="M126 182 h10 M131 177 v10" transform="rotate(-8 130 188)" stroke="#00E676" stroke-width="2.4"/>
+          <rect x="104" y="170" width="52" height="36" rx="6" transform="rotate(-8 130 188)" fill="#EAF2FB" stroke="#3B82F6" stroke-opacity=".8"/>
+          <path d="M126 182 h10 M131 177 v10" transform="rotate(-8 130 188)" stroke="#00C266" stroke-width="2.4"/>
           <!-- stethoscope hint -->
-          <path d="M150 150 q14 6 10 26" stroke="#00D4FF" stroke-opacity=".5" stroke-width="2" fill="none"/>
-          <circle cx="160" cy="178" r="5" fill="#0f1923" stroke="#00D4FF" stroke-opacity=".6"/>
+          <path d="M150 150 q14 6 10 26" stroke="#3B82F6" stroke-opacity=".6" stroke-width="2" fill="none"/>
+          <circle cx="160" cy="178" r="5" fill="#FFFFFF" stroke="#3B82F6" stroke-opacity=".7"/>
         </g>
       </svg>
     </div>
