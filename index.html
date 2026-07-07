@@ -122,8 +122,8 @@
   @keyframes fade{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
 
   .card{ background:var(--surface); border:1px solid var(--border); border-radius:calc(var(--radius) + 4px); box-shadow:var(--card-shadow); }
-  .section-title{ font-size:19px; font-weight:600; margin:0 0 16px; }
-  .section-sub{ color:var(--text-2); font-size:13.5px; margin:-10px 0 20px; }
+  .section-title{ font-size:22px; font-weight:600; margin:0 0 16px; }
+  .section-sub{ color:var(--text-2); font-size:15px; margin:-10px 0 20px; }
 
   /* HOME - animated background */
   .home-bg{ position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0; }
@@ -168,12 +168,13 @@
     border-radius:50%; background:var(--green-bg); animation:drift 17s ease-in-out infinite alternate-reverse;
   }
   .hero-inner{ position:relative; z-index:1; }
-  .hero h1{ font-size:32px; font-weight:700; margin:0 0 12px; }
-  .hero p{ color:var(--text-2); font-size:15px; max-width:580px; margin:0 auto 26px; }
+  .hero h1{ font-size:42px; font-weight:700; margin:0 0 14px; }
+  .hero p{ color:var(--text-2); font-size:18px; max-width:620px; margin:0 auto 26px; }
   .hero-actions{ display:flex; gap:12px; justify-content:center; margin-bottom:34px; }
+  .hero-actions .cta-btn{ font-size:16px; padding:12px 26px; }
   .stats{ display:flex; justify-content:center; gap:44px; }
-  .stat b{ display:block; font-size:22px; }
-  .stat span{ font-size:12.5px; color:var(--text-2); }
+  .stat b{ display:block; font-size:28px; }
+  .stat span{ font-size:14px; color:var(--text-2); }
 
   /* Layout 2 - courses first, split hero */
   html[data-layout="2"] .home-flow{ grid-template-areas:"hero" "courses" "features" "instructor" "testimonials" "cta"; }
@@ -225,8 +226,8 @@
     width:38px; height:38px; border-radius:calc(var(--radius) - 2px); background:var(--accent-bg); color:var(--accent-dark);
     display:flex; align-items:center; justify-content:center; margin-bottom:12px;
   }
-  .feature h4{ font-size:14.5px; margin:0 0 6px; }
-  .feature p{ font-size:12.5px; color:var(--text-2); margin:0; }
+  .feature h4{ font-size:16px; margin:0 0 6px; }
+  .feature p{ font-size:13.5px; color:var(--text-2); margin:0; }
 
   .course-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:18px; margin-bottom:20px; }
   .course-card{ overflow:hidden; cursor:pointer; transition:transform .15s; }
@@ -237,8 +238,8 @@
   .tag{ font-size:11px; font-weight:600; padding:2px 9px; border-radius:20px; }
   .tag.free{ background:var(--green-bg); color:var(--green); }
   .tag.level{ background:var(--surface-2); color:var(--text-2); }
-  .course-body h3{ font-size:15px; margin:0 0 6px; }
-  .course-meta{ font-size:12.5px; color:var(--text-2); margin:0 0 8px; }
+  .course-body h3{ font-size:16.5px; margin:0 0 6px; }
+  .course-meta{ font-size:13.5px; color:var(--text-2); margin:0 0 8px; }
   .rating{ display:flex; align-items:center; gap:5px; font-size:12px; color:var(--text-2); margin-bottom:10px; }
   .rating b{ color:var(--text); }
   .instructor-row{ display:flex; align-items:center; gap:8px; margin-bottom:10px; }
@@ -403,11 +404,11 @@
     .layout-bar button{ width:34px; height:34px; font-size:13.5px; }
 
     .hero{ padding:34px 20px; }
-    .hero h1{ font-size:24px; }
-    .hero p{ font-size:14px; }
+    .hero h1{ font-size:30px; }
+    .hero p{ font-size:16px; }
     .stats{ flex-wrap:wrap; gap:16px 26px; }
 
-    .section-title{ font-size:17px; }
+    .section-title{ font-size:19px; }
     .feature-grid, .testi-grid{ grid-template-columns:1fr; }
     .course-grid{ grid-template-columns:1fr 1fr; }
     html[data-layout="5"] .course-grid{ grid-template-columns:1fr 1fr; }
@@ -426,7 +427,7 @@
   @media (max-width:380px){
     .course-grid, html[data-layout="5"] .course-grid{ grid-template-columns:1fr; }
     .quick-stats{ grid-template-columns:1fr; }
-    .hero h1{ font-size:22px; }
+    .hero h1{ font-size:26px; }
   }
 
   /* ============================================================
