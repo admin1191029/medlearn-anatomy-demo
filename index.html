@@ -572,7 +572,7 @@
 </head>
 <body>
 
-<div id="landing" dir="ltr">
+<div id="landing" class="hidden" dir="ltr">
   <div class="l-blackout"></div>
 
   <div class="l-bg" aria-hidden="true">
@@ -1298,6 +1298,14 @@
   (function(){
     var landing = document.getElementById('landing');
     if(!landing) return;
+
+    // Welcome screen temporarily disabled. Set to false to re-enable.
+    var LANDING_DISABLED = true;
+    if(LANDING_DISABLED){
+      landing.classList.add('hidden');
+      document.body.classList.remove('landing-open');
+      return;
+    }
 
     var forceIntro = /(^|[#?&])intro\b/.test(location.hash) || location.hash === '#intro';
     var seen = false;
